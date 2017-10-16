@@ -2,8 +2,11 @@
 #include<string>
 #include "bitmap.h"
 #include<iostream>
+
 using namespace std;
 int main()
+
+
 {
 /*  - Ask the user to input an image and name in BMP format
     - Input the image 
@@ -24,24 +27,37 @@ int main()
     Pixel rgb;
 
     void open(string);    
-    image.open("machupicchu.bmp");
-    bool isImage();
-    bmp = image.toPixelMatrix();
-    vector<vector<Pixel> >toPixelMatrix();
+    image.open(input);
+    bool validBMP = image.isImage();
+       if( validBMP = true)
+        {
+          bmp = image.toPixelMatrix();
+  
     
-    const int width = Pixel [0].size();
-    const int height = 
-    cout<<input<<" has been loaded. It is "<<width<<"wide, and "<<Pixel.height()<<"high"<<endl;
-
-    rgb = bmp[0][0];
-    rgb.red = 0;
-
-    bmp[0][0] = rgb;
-    image.fromPixelMatrix(bmp);
-    image.save("machupicchu.bmp");
-
-
-
+        int row = bmp.size();
+        int col = bmp[0].size();
+        cout<<input<<" has been loaded. It is "<<col<<" wide, and "<<row<<" high"<<endl;
+    
+            for( int r = 0; r < bmp.size(); r++)
+            {
+                for( int c = 0; c < bmp[r].size(); c++)
+                {
+                    rgb = bmp[r][c];
+                    int greyScale = (rgb.red+rgb.green+rgb.blue)/3;
+                    rgb.red = greyScale;
+                    rgb.green = greyScale;
+                    rgb.blue = greyScale;
+                    bmp[r][c] = rgb;
+                    image.fromPixelMatrix(bmp);
+                    image.save("OldTimey.bmp");
+                }
+            }
+        }
+        else
+        {
+            cout<<"Please enter a 24 bit photo in proper BMP format"<<endl;
+        }
+break
 
 return 0;
 }

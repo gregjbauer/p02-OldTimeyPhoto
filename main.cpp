@@ -57,7 +57,5 @@ int main()
         {
             cout<<"Please enter a 24 bit photo in proper BMP format"<<endl;
         }
-break
-
 return 0;
 }

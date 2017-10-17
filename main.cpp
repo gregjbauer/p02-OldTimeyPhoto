@@ -21,7 +21,7 @@ int main()
 
         Bitmap image;
         string input;
-    cout<<"Input a file to be converted to grayscale"<<endl;    
+    cout<<"Input a file to be converted to greyscale"<<endl;    
     cin>>input;
     vector <vector <Pixel> >bmp;
     Pixel rgb;
@@ -29,7 +29,7 @@ int main()
     void open(string);    
     image.open(input);
     bool validBMP = image.isImage();
-       if( validBMP = true)
+       if( validBMP == true)
         {
           bmp = image.toPixelMatrix();
   
@@ -38,9 +38,9 @@ int main()
         int col = bmp[0].size();
         cout<<input<<" has been loaded. It is "<<col<<" wide, and "<<row<<" high"<<endl;
     
-            for( int r = 0; r < bmp.size(); r++)
+            for( int r = 0; r < row; r++)
             {
-                for( int c = 0; c < bmp[r].size(); c++)
+                for( int c = 0; c < col; c++)
                 {
                     rgb = bmp[r][c];
                     int greyScale = (rgb.red+rgb.green+rgb.blue)/3;
@@ -48,10 +48,10 @@ int main()
                     rgb.green = greyScale;
                     rgb.blue = greyScale;
                     bmp[r][c] = rgb;
-                    image.fromPixelMatrix(bmp);
-                    image.save("OldTimey.bmp");
                 }
             }
+        image.fromPixelMatrix(bmp);
+        image.save("OldTimey.bmp");
         }
         else
         {
